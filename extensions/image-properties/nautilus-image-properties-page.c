@@ -173,15 +173,15 @@ append_gexiv2_tag (NautilusImagesPropertiesPage  *page,
 
     for (const char **i = tag_names; *i != NULL; i++)
     {
-        if (gexiv2_metadata_has_tag (page->md, *i))
+        if (gexiv2_metadata_has_tag (page->md, *i, NULL))
         {
             g_autofree char *tag_value = NULL;
 
-            tag_value = gexiv2_metadata_get_tag_interpreted_string (page->md, *i);
+            tag_value = gexiv2_metadata_get_tag_interpreted_string (page->md, *i, NULL);
 
             if (description == NULL)
             {
-                description = gexiv2_metadata_get_tag_description (*i);
+                description = gexiv2_metadata_get_tag_description (*i, NULL);
             }
 
             /* don't add empty tags - try next one */
@@ -243,7 +243,7 @@ append_gexiv2_info (NautilusImagesPropertiesPage *page)
     append_gexiv2_tag (page, rights, _("Copyright"));
     append_gexiv2_tag (page, rating, _("Rating"));
 
-    if (gexiv2_metadata_get_gps_info (page->md, &longitude, &latitude, &altitude))
+    if (gexiv2_metadata_get_gps_info (page->md, &longitude, &latitude, &altitude, NULL))
     {
         g_autofree char *gps_coords = NULL;
 

@@ -118,7 +118,7 @@ gio_unix = dependency('gio-unix-2.0', version: glib_ver)
 glib = dependency('glib-2.0', version: glib_ver)
 gmodule = dependency('gmodule-no-export-2.0', version: glib_ver)
 gnome_autoar = dependency('gnome-autoar-0', version: '>= 0.2.1')
-gnome_desktop = dependency('gnome-desktop-3.0', version: '>= 3.0.0')
+gnome_desktop = dependency('scarecrow-desktop-3.0', version: '>= 3.0.0')
 gtk = dependency('gtk+-3.0', version: '>= 3.22.27')
 selinux = []
 if get_option('selinux')
