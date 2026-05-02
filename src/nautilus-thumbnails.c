@@ -529,7 +529,7 @@ thumbnail_thread_func (GTask        *task,
 
         pixbuf = gnome_desktop_thumbnail_factory_generate_thumbnail (thumbnail_factory,
                                                                      info->image_uri,
-                                                                     info->mime_type);
+                                                                     info->mime_type, NULL, NULL);
 
         if (pixbuf)
         {
@@ -539,7 +539,7 @@ thumbnail_thread_func (GTask        *task,
             gnome_desktop_thumbnail_factory_save_thumbnail (thumbnail_factory,
                                                             pixbuf,
                                                             info->image_uri,
-                                                            current_orig_mtime);
+                                                            current_orig_mtime, NULL, NULL);
             g_object_unref (pixbuf);
         }
         else
@@ -549,7 +549,7 @@ thumbnail_thread_func (GTask        *task,
 
             gnome_desktop_thumbnail_factory_create_failed_thumbnail (thumbnail_factory,
                                                                      info->image_uri,
-                                                                     current_orig_mtime);
+                                                                     current_orig_mtime, NULL, NULL);
         }
         /* We need to call nautilus_file_changed(), but I don't think that is
          *  thread safe. So add an idle handler and do it from the main loop. */
